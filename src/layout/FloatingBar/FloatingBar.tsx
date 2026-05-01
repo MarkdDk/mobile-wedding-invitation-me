@@ -1,27 +1,34 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import data from 'data.json';
-// import { increment, onValue, ref, update } from 'firebase/database';
-// import { realtimeDb } from 'firebase.ts';
+import { onValue, ref, runTransaction } from 'firebase/database';
 import JSConfetti from 'js-confetti';
 import Heart from '@/assets/icons/heart_plus.svg?react';
 import Share from '@/assets/icons/share.svg?react';
 import Upward from '@/assets/icons/upward.svg?react';
 import Button from '@/components/Button.tsx';
+import { realtimeDb } from '../../firebase.ts';
 
 const FloatingBar = ({ isVisible }: { isVisible: boolean }) => {
   const { emojis } = data;
+  const [count, setCount] = useState(0);
+  const jsConfetti = useMemo(() => new JSConfetti(), []);
 
-  // TODO: count 기능 사용 원할시 firebase realtime db 연결!
-  // const [count, setCount] = useState(0);
+  useEffect(() => {
+    const likesRef = ref(realtimeDb, 'likes/count');
 
-  // useEffect(() => {
-  // TODO: realtime db 에 likes 객체 추가.
-  //   const dbRef = ref(realtimeDb, 'likes');
-  //   onValue(dbRef, (snapshot) => {
-  //     setCount(Number(snapshot.val()));
-  //   });
-  // }, []);
+    const unsubscribe = onValue(
+      likesRef,
+      (snapshot) => {
+        setCount(Number(snapshot.val() ?? 0));
+      },
+      (error) => {
+        console.error('Failed to subscribe likes:', error);
+      },
+    );
+
+    return unsubscribe;
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href).then(
@@ -37,14 +44,14 @@ const FloatingBar = ({ isVisible }: { isVisible: boolean }) => {
   const handleCount = () => {
     void jsConfetti.addConfetti({ emojis });
 
-    // 버튼 클릭시 likes 수 증가
-    // const dbRef = ref(realtimeDb);
-    // void update(dbRef, {
-    //   likes: increment(1),
-    // });
+    void runTransaction(ref(realtimeDb, 'likes/count'), (current) => {
+      return Number(current ?? 0) + 1;
+    }).catch((error) => {
+      console.error('Failed to update likes:', error);
+      alert('좋아요를 저장하지 못했습니다. 잠시 후 다시 시도해주세요.');
+    });
   };
 
-  const jsConfetti = new JSConfetti();
   const handleScroll = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -53,7 +60,7 @@ const FloatingBar = ({ isVisible }: { isVisible: boolean }) => {
     <Nav isVisible={isVisible}>
       <Button onClick={handleCount}>
         <Heart fill="#e88ca6" />
-        {/*{count || ''}*/}
+        {count || ''}
       </Button>
       <Button onClick={handleCopy}>
         <Share fill="#e88ca6" />

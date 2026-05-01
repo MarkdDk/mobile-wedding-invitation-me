@@ -1,32 +1,43 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import styled from '@emotion/styled';
-// import { push, ref, serverTimestamp } from 'firebase/database';
-// import { realtimeDb } from '../../firebase.ts';
+import { push, ref, serverTimestamp } from 'firebase/database';
+import { realtimeDb } from '../../firebase.ts';
 
-// TODO: 방명록 기능 사용시, realtime db에 guestbook 추가
-// const guestbookRef = ref(realtimeDb, 'guestbook');
+const guestbookRef = ref(realtimeDb, 'guestbook');
 
 const CommentForm = () => {
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (!name || !message) {
-      alert('이름과 메시지를 채워주세요. 🥹');
-    } else {
-      e.preventDefault();
-      // TODO: 이름, 메시지, 생성시간, 작성날짜 저장.
-      // const guestbookMessage = {
-      //   sender: name,
-      //   message: message,
-      //   createdAt: serverTimestamp(),
-      //   date: new Date().toLocaleString(),
-      // };
-      // void push(guestbookRef, guestbookMessage);
-      //
-      // alert('메시지를 보냈습니다. 💌');
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const trimmedName = name.trim();
+    const trimmedMessage = message.trim();
+
+    if (!trimmedName || !trimmedMessage) {
+      alert('이름과 메시지를 채워주세요.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await push(guestbookRef, {
+        name: trimmedName,
+        message: trimmedMessage,
+        createdAt: serverTimestamp(),
+      });
+
       setName('');
       setMessage('');
+      alert('메시지를 보냈습니다.');
+    } catch (error) {
+      console.error('Failed to save guestbook message:', error);
+      alert('메시지를 저장하지 못했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -36,14 +47,20 @@ const CommentForm = () => {
         placeholder="이름"
         type="text"
         value={name}
+        maxLength={29}
+        disabled={isSubmitting}
         onChange={(e) => setName(e.target.value)}
       />
       <MessageInput
         placeholder="메시지"
         value={message}
+        maxLength={499}
+        disabled={isSubmitting}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <SubmitButton type="submit">등록</SubmitButton>
+      <SubmitButton type="submit" disabled={isSubmitting}>
+        {isSubmitting ? '등록 중' : '등록'}
+      </SubmitButton>
     </FormWrapper>
   );
 };
@@ -95,5 +112,10 @@ const SubmitButton = styled.button`
   font-family: inherit;
   font-weight: inherit;
   color: inherit;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 `;
 export default CommentForm;
