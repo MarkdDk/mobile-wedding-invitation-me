@@ -1,45 +1,45 @@
 {
   "greeting": {
-    "title": "장세모 \uD83D\uDC8D 황네모\n결혼합니다!",
-    "message": "저희 결혼합니다.\n\n서로에게 알맞은 온도로 따뜻하던 우리.\n부부로서 첫걸음을 내딛는 그 설렘의 순간에\n소중한 분들을 초대합니다.",
+    "title": "도대국 \uD83D\uDC8D 오유나\n결혼합니다!",
+    "message": "저희 결혼합니다.\n\n서로의 부족함을 채워가며 사랑으로 함께해 온 저희 두 사람,\n이제 평생을 함께하기로 약속했습니다.\n귀한 걸음 하시어 축복해 주시면 더없는 기쁨이겠습니다.",
     "host": {
       "groom": {
-        "name": "세모",
+        "name": "대국",
         "relation": "아들",
         "parents": [
           {
             "relation": "아버지",
-            "name": "장아빠"
+            "name": "도희봉"
           },
           {
             "relation": "어머니",
-            "name": "이엄마"
+            "name": "김정선"
           }
         ]
       },
       "bride": {
-        "name": "네모",
+        "name": "유나",
         "relation": "딸",
         "parents": [
           {
             "relation": "아버지",
-            "name": "황아빠"
+            "name": "오준환"
           },
           {
             "relation": "어머니",
-            "name": "이엄마"
+            "name": "서보경"
           }
         ]
       }
     },
-    "eventDetail": "2024년 2월 17일 (토) 14:00\n아펠가모 공덕 라로브홀"
+    "eventDetail": "2026년 8월 15일 (토) 12:40\n웨딩스퀘어 강변 그레이스홀(4층)"
   },
   "hostInfo": [
     {
       "host": "신랑측",
       "accountInfo": [
         {
-          "name": "장세모",
+          "name": "도대국",
           "relation": "신랑",
           "bank": "카카오뱅크",
           "account": "1234-56-789012",
@@ -47,13 +47,13 @@
           "tossAccount": ""
         },
         {
-          "name": "장아빠",
+          "name": "도희봉",
           "relation": "아버지",
           "bank": "농협",
           "account": "123-45-678901"
         },
         {
-          "name": "이엄마",
+          "name": "김정선",
           "relation": "어머니",
           "bank": "농협",
           "account": "123-45-678901"
@@ -64,7 +64,7 @@
       "host": "신부측",
       "accountInfo": [
         {
-          "name": "황네모",
+          "name": "오유나",
           "relation": "신부",
           "bank": "토스뱅크",
           "account": "1234-5678-9012",
@@ -72,13 +72,13 @@
           "tossAccount": ""
         },
         {
-          "name": "황아빠",
+          "name": "오준환",
           "relation": "아버지",
           "bank": "농협",
           "account": "123-45-678901"
         },
         {
-          "name": "이엄마",
+          "name": "서보경",
           "relation": "어머니",
           "bank": "농협",
           "account": "123-45-678901"
@@ -87,21 +87,21 @@
     }
   ],
   "mapInfo": {
-    "address1": "아펠가모 공덕 라로브홀",
-    "address2": "서울 마포구 마포대로 92\n효성해링턴스퀘어 B동 7층\n02-2197-0230",
-    "naverMap": "https://naver.me/IM4RDses",
-    "kakaoMap": "https://kko.kakao.com/otznTfkVWV",
-    "lat": 37.54222,
-    "lon": 126.952708
+    "address1": "웨딩스퀘어 강변 그레이스홀",
+    "address2": "서울 광진구 광나루로56길 85\n테크노마트 3,4층\n0507-1368-7001",
+    "naverMap": "https://naver.me/FdCx2LFq",
+    "kakaoMap": "https://place.map.kakao.com/23397688",
+    "lat": 37.5350,
+    "lon": 127.0958
   },
   "locationInfo": [
     {
       "title": "\uD83D\uDCCD 지하철",
-      "desc": "\uD83D\uDC49\uD83C\uDFFB 5·6호선 공덕역 7번 출구 (도보 2분)\n\uD83D\uDC49\uD83C\uDFFB 경의·중앙선, 공항철도 공덕역 10번 출구 (도보 30초)"
+      "desc": "\uD83D\uDC49\uD83C\uDFFB 지하철 2호선 강변역 1번, 2번 출구 강변테크노마트 (도보 1분)"
     },
     {
       "title": "\uD83D\uDCCD 주차안내",
-      "desc": "\uD83D\uDC49\uD83C\uDFFB 건물 내 3-5층 2시간 무료주차\n(안내데스크에서 주차권 수령)"
+      "desc": "\uD83D\uDC49\uD83C\uDFFB 강변 테크노마트 B1층~B5층\n(안내데스크에서 주차권 수령)"
     }
   ],
   "emojis": [

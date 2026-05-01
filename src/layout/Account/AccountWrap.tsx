@@ -1,23 +1,17 @@
 import styled from '@emotion/styled';
 import Copy from '@/assets/icons/copy.svg?react';
-import kakaopay from '@/assets/icons/kakaopay.png?url';
-import toss from '@/assets/icons/toss.png?url';
 
 interface IAccountProps {
   name: string;
   relation: string;
   bank: string;
   account: string;
-  kakaopayAccount?: string;
-  tossAccount?: string;
 }
 const AccountWrap = ({
   name,
   relation,
   bank,
   account,
-  kakaopayAccount,
-  tossAccount,
 }: IAccountProps) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(account).then(
@@ -44,18 +38,6 @@ const AccountWrap = ({
           <Copy fill="#dfdfdf" />
         </CopyButton>
       </Details>
-      <AccountLinks>
-        {kakaopayAccount && (
-          <AccountButton href={kakaopayAccount} target="_blank" rel="noreferrer">
-            <KakaopayImg src={kakaopay} alt="kakaopay" />
-          </AccountButton>
-        )}
-        {tossAccount && (
-          <AccountButton href={tossAccount} target="_blank" rel="noreferrer">
-            <TossImg src={toss} alt="toss" />
-          </AccountButton>
-        )}
-      </AccountLinks>
     </Wrapper>
   );
 };
@@ -102,39 +84,6 @@ const CopyButton = styled.button`
   outline: none;
   box-shadow: none;
   background: white;
-`;
-
-const AccountLinks = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 2px;
-`;
-
-const AccountButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #dfdfdf;
-  border-radius: 5px;
-  margin: 5px 0;
-  padding: 0 0.8em;
-  width: inherit;
-  font-size: 0.7rem;
-  cursor: pointer;
-  gap: 2px;
-  color: #1a1a1a;
-  text-decoration: none;
-  outline: none;
-  box-shadow: none;
-  background: white;
-`.withComponent('a');
-
-const KakaopayImg = styled.img`
-  width: 50px;
-`;
-
-const TossImg = styled.img`
-  width: 70px;
 `;
 
 export default AccountWrap;
