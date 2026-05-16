@@ -11,10 +11,11 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 
-DEFAULT_INPUT_DIR = Path("/Users/ddk/Downloads/convert")
+# DEFAULT_INPUT_DIR = Path("/Users/ddk/Downloads/convert")
+DEFAULT_INPUT_DIR = Path("/Users/ddk/Downloads/confirm")
 DEFAULT_OUTPUT_DIR = Path(
     "/Users/ddk/Desktop/WS/wedding_invitation/"
-    "mobile-wedding-invitation-me/src/assets/images_all"
+    "mobile-wedding-invitation-me/src/assets/images_all_"
 )
 
 IMAGE_EXTENSIONS = {
