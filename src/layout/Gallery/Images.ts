@@ -12,6 +12,12 @@ import image11 from '@/assets/images/11.jpg'
 import image12 from '@/assets/images/12.jpg'
 import image13 from '@/assets/images/13.jpg'
 import image14 from '@/assets/images/14.jpg'
+import image15 from '@/assets/images/15.jpg'
+import image16 from '@/assets/images/16.jpg'
+import image17 from '@/assets/images/17.jpg'
+import image18 from '@/assets/images/18.jpg'
+import image19 from '@/assets/images/19.jpg'
+import image20 from '@/assets/images/20.jpg'
 
 const galleryImageSize = {
   width: 1280,
@@ -87,6 +93,36 @@ const images = [
   {
     alt: 'image14',
     source: image14,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image15',
+    source: image15,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image16',
+    source: image16,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image17',
+    source: image17,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image18',
+    source: image18,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image19',
+    source: image19,
+    ...galleryImageSize,
+  },
+  {
+    alt: 'image20',
+    source: image20,
     ...galleryImageSize,
   },
 ]
